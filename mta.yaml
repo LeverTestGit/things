@@ -42,6 +42,43 @@ modules:
         - npm run build:cf
       supported-platforms:
         []
+  - name: things-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: things-uaa
+        parameters:
+          service-key:
+            name: things-uaa-key
+      - name: things-repo-host
+        parameters:
+          service-key:
+            name: things-repo-host-key
+      - name: srv-api
+      - name: things-destination-service
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Authentication: OAuth2UserTokenExchange
+              Name: things
+              TokenServiceInstanceName: things-uaa
+              TokenServiceKeyName: things-uaa-key
+              URL: '~{srv-api/srv-url}'
+              sap.cloud.service: things
+            - Name: things-repo-host
+              ServiceInstanceName: things-html5-srv
+              ServiceKeyName: things-repo-host-key
+              sap.cloud.service: things
+            - Authentication: OAuth2UserTokenExchange
+              Name: things-uaa
+              ServiceInstanceName: things-xsuaa-srv
+              ServiceKeyName: things-uaa-key
+              sap.cloud.service: things
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
 
   - name: things-db-deployer
     type: hdb
@@ -61,7 +98,7 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       config:
-        HTML5Runtime_enabled: false
+        HTML5Runtime_enabled: true
         init_data:
           instance:
             destinations:
@@ -84,6 +121,7 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
+      service-name: things-xsuaa-srv
       service-plan: application
       path: ./xs-security.json
       config:

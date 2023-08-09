@@ -15,6 +15,18 @@
       "version": "1.10.4",
       "toolsId": "26c9cb26-2c48-468b-be6e-d4bd3487567f"
     },
+    "crossNavigation": {
+      "inbounds": {
+        "Things-display": {
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          },
+          "semanticObject": "Things",
+          "action": "display"
+        }
+      }
+    },
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/things/",
@@ -133,5 +145,9 @@
   "sap.fiori": {
     "registrationIds": [],
     "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "things"
   }
 }
