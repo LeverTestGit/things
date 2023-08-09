@@ -62,8 +62,8 @@ modules:
         instance:
           destinations:
             - Authentication: OAuth2UserTokenExchange
-              Name: things
-              TokenServiceInstanceName: things-uaa
+              Name: things-app-srv
+              TokenServiceInstanceName: things-xsuaa-srv
               TokenServiceKeyName: things-uaa-key
               URL: '~{srv-api/srv-url}'
               sap.cloud.service: things
