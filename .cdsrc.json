@@ -1,1 +1,25 @@
-{}
+{
+    "[development]": {
+        "auth": {
+            "passport": {
+                "strategy": "mock",
+                "users": {
+                    "thingsviewer@sap.com": {
+                        "password": "initial",
+                        "ID": "thingsviewer@sap.com",
+                        "roles": [
+                            "ThingsViewer"
+                        ]
+                    },
+                    "thingsmanager@sap.com": {
+                        "password": "initial",
+                        "ID": "thingsmanager@sap.com",
+                        "roles": [
+                            "ThingsManager"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
