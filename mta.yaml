@@ -16,6 +16,7 @@ modules:
       builder: npm
     requires:
       - name: things-db
+      - name: things-auth
   - name: things-app-content
     type: com.sap.application.content
     path: .
@@ -79,6 +80,12 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: things-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

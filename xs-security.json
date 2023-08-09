@@ -1,0 +1,33 @@
+{
+  "xsappname": "things",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.ThingsViewer",
+      "description": "ThingsViewer"
+    },
+    {
+      "name": "$XSAPPNAME.ThingsManager",
+      "description": "ThingsManager"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "ThingsViewer",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.ThingsViewer"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "ThingsManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.ThingsManager"
+      ],
+      "attribute-references": []
+    }
+  ]
+}
