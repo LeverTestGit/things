@@ -16,7 +16,7 @@ modules:
       builder: npm
     requires:
       - name: things-db
-      - name: things-auth
+      - name: things-uaa
   - name: things-app-content
     type: com.sap.application.content
     path: .
@@ -80,12 +80,22 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
-  - name: things-auth
+  - name: things-uaa
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
       service-plan: application
       path: ./xs-security.json
+      config:
+        role-collections:
+          - name: 'ThingsManager'
+            description: Manage Things
+            role-template-references:
+              - $XSAPPNAME.ThingsManager
+          - name: 'ThingsViewer'
+            description: View Things
+            role-template-references:
+              - $XSAPPNAME.ThingsViewer
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
@@ -93,4 +103,6 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
-        - npx cds build --production
+        - npm install --production
+        - npx -p @sap/cds-dk cds build --production
+        - npx rimraf gen/db/src/gen/data

@@ -18,6 +18,9 @@
     "@sap/ux-specification": "^1.108.11",
     "rimraf": "^3.0.2"
   },
+  "engines": {
+    "node": "^18"
+  },
   "scripts": {
     "start": "cds-serve",
     "watch-things": "cds watch --open things/webapp/index.html?sap-ui-xx-viewCache=false",
