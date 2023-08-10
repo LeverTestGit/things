@@ -63,7 +63,7 @@ modules:
           destinations:
             - Authentication: OAuth2UserTokenExchange
               Name: things-app-srv
-              TokenServiceInstanceName: things-xsuaa-srv
+              TokenServiceInstanceName: things-uaa
               TokenServiceKeyName: things-uaa-key
               URL: '~{srv-api/srv-url}'
               sap.cloud.service: things
@@ -73,7 +73,7 @@ modules:
               sap.cloud.service: things
             - Authentication: OAuth2UserTokenExchange
               Name: things-uaa
-              ServiceInstanceName: things-xsuaa-srv
+              ServiceInstanceName: things-uaa
               ServiceKeyName: things-uaa-key
               sap.cloud.service: things
           existing_destinations_policy: update
@@ -121,7 +121,7 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
-      service-name: things-xsuaa-srv
+      service-name: things-uaa
       service-plan: application
       path: ./xs-security.json
       config:
